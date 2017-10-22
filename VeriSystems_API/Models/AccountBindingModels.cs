@@ -34,6 +34,7 @@ namespace VeriSystems_API.Models
 
     public class RegisterBindingModel
     {
+        
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }

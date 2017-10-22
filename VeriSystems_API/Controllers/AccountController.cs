@@ -51,6 +51,16 @@ namespace VeriSystems_API.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
+        //GET api/Account/Users
+        [Route("Users")]
+        public async Task<IHttpActionResult> GetUsers(string email)
+        {
+            UserManager
+            return (IHttpActionResult)Task.Run(()=> { });
+
+        }
+
+
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("UserInfo")]

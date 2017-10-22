@@ -31,11 +31,5 @@ namespace VeriSystems_API.Models
             return new ApplicationDbContext();
         }
     }
-    public class VeriSystemDb: DbContext
-    {
-        public VeriSystemDb():base("DefaultConnection")
-        {
-
-        }
-    }
+    
 }
