@@ -19,7 +19,7 @@ using VeriSystems_API.Results;
 
 namespace VeriSystems_API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
@@ -55,9 +55,8 @@ namespace VeriSystems_API.Controllers
         [Route("Users")]
         public async Task<IHttpActionResult> GetUsers(string email)
         {
-            UserManager
+            var user = new ApplicationDbContext().Users.t
             return (IHttpActionResult)Task.Run(()=> { });
-
         }
 
 
