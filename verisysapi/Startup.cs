@@ -22,18 +22,19 @@ namespace verisysapi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration 
+        public IConfiguration Configuration
         {
-            createrolesandusers();
-                 get; 
+            //createrolesandusers();
+                 get;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddAuthentication(AzureADB2CDefaults.BearerAuthenticationScheme)
                 .AddAzureADB2CBearer(options => Configuration.Bind("AzureAdB2C", options));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +54,7 @@ namespace verisysapi
             app.UseAuthentication();
             app.UseMvc();
         }
-        public void createrolesandusers()
+      /*  public void createrolesandusers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
 
@@ -61,7 +62,7 @@ namespace verisysapi
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
 
-            // In Startup iam creating first Admin Role and creating a default Admin User 
+            // In Startup iam creating first Admin Role and creating a default Admin User
             if (!roleManager.RoleExists("Admin"))
             {
                 // first we create Admin rool
@@ -69,7 +70,7 @@ namespace verisysapi
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                //Here we create a Admin super user who will maintain the website               
+                //Here we create a Admin super user who will maintain the website
 
                 var user = new ApplicationUser();
                 user.UserName = "Admin";
@@ -86,7 +87,7 @@ namespace verisysapi
                 }
             }
 
-            // creating Creating Manager role 
+            // creating Creating Manager role
             if (!roleManager.RoleExists("Manager"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
@@ -94,13 +95,13 @@ namespace verisysapi
                 roleManager.Create(role);
             }
 
-            // creating Creating Employee role 
+            // creating Creating Employee role
             if (!roleManager.RoleExists("Employee"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Employee";
                 roleManager.Create(role);
             }
-        }
+        }*/
     }
 }
